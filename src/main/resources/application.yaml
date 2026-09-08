@@ -1,6 +1,16 @@
 spring:
   application:
     name: mu-ai-agent
+  ai:
+    dashscope:
+      api-key: sk-ws-H.PMRPHEE.i817.MEQCIDkyEMrE34aUoqjCj8BMNE_yVW-4hPGy_Mirq7Rd-fzMAiA5QiX_QrevH1GNU65r0sumJgeQMwZyN4pYzW22fjks-A
+      chat:
+        model: qwen3.8-max
+        options:
+          temperature: 0.7
+          max-tokens: 2000
+          # 是否启用流式响应
+          stream: true
 server:
   port: 8123
   servlet:
@@ -16,9 +26,16 @@ springdoc:
   group-configs:
     - group: 'default'
       paths-to-match: '/**'
-      packages-to-scan: com.cyh.muaiagent
+      packages-to-scan: com.cyh
 # knife4j
 knife4j:
   enable: true
   setting:
     language: zh_cn
+
+logging:
+  level:
+    com.alibaba.cloud.ai: DEBUG
+    org.springframework.ai: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
